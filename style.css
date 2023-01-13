@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.hide {
+  display: none;
+}
+.main {
+  width: 100%;
+  height: 100vh;
+}
+.game {
+  width: 300px;
+  height: 600px;
+  border: solid 1px #ea2b2b;
+  background-color: #171717;
+  margin: auto;
+  overflow: hidden;
+}
+
+.character {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  top: 500px;
+  left: 100px;
+  user-select: none;
+}
+
+.score-container {
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  display: flex;
+  align-items: center;
+}
+.score-container img {
+  width: 25px;
+}
+
+.score-container .score {
+  font-size: 20px;
+  margin-left: 15px;
+}
+
+.highscore-container {
+  position: absolute;
+  left: 50px;
+  top: 100px;
+  align-items: center;
+}
+
+.enemy {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  user-select: none;
+  animation: slide 0.8s infinite linear;
+}
+
+@keyframes slide {
+  0% {
+    top: -300px;
+  }
+  100% {
+    top: 500px;
+  }
+}
+
+.character img,
+.enemy img {
+  width: 100%;
+}
+
+.start-menu {
+  position: absolute;
+  text-align: center;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #141414;
+  color: #ffffff;
+  border-radius: 10px;
+}
+
+.start-menu .comet-welcome {
+  width: 100px;
+}
+
+.start-menu h1 {
+  font-size: 30px;
+  margin: 10px;
+  text-transform: uppercase;
+}
+.start-menu p {
+  font-size: 15px;
+  margin: 8px;
+}
+
+.start-menu .start {
+  margin: 10px;
+  padding: 10px 20px;
+  background: #ea2b2b;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
