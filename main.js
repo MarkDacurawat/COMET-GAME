@@ -59,6 +59,9 @@ window.onkeydown = (e) => {
   if (e.key == "ArrowRight") {
     moveRight();
   }
+  if (game.classList.contains("hide") && e.code == "Space") {
+    startFuntion();
+  }
 };
 
 const checkCollision = () => {
@@ -96,6 +99,10 @@ const checkCollision = () => {
 };
 
 startBtn.onclick = () => {
+  startFuntion();
+};
+
+const startFuntion = () => {
   enemy.style.animation = "slide 0.8s infinite linear";
   game.classList.remove("hide");
   startMenu.classList.add("hide");
