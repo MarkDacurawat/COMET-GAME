@@ -13,18 +13,18 @@ const rightController = document.querySelector(".right-controller");
 
 const player = {
   score: 0,
-  highscore: 0,
+  highScore: 0,
 };
 
-const storedHighScore = localStorage.getItem("highScore");
-const score = localStorage.getItem("score");
+window.onload = () => {
+  const storedHighScore = localStorage.getItem("highScore");
 
-if (!storedHighScore && !score) {
-  localStorage.setItem("highScore", player.highscore);
-  localStorage.setItem("score", player.score);
-}
-
-highScore.textContent = storedHighScore;
+  if (!storedHighScore) {
+    console.log(1);
+    localStorage.setItem("highScore", player.highScore);
+  }
+  highScore.textContent = storedHighScore || 0;
+};
 
 const moveLeft = () => {
   let left = parseInt(
@@ -42,8 +42,6 @@ enemy.addEventListener("animationiteration", () => {
   enemy.style.left = `${left}px`;
   player.score += 1;
   scoreOutput.textContent = player.score;
-  highScore.textContent = localStorage.getItem("highScore");
-  localStorage.setItem("score", player.score);
 });
 
 const moveRight = () => {
@@ -93,16 +91,17 @@ const checkCollision = () => {
     startMenu.classList.remove("hide");
     mobileControllerContainer.style.display = "none";
 
-    // Check Highscore
     const storedHighScore = parseInt(localStorage.getItem("highScore"));
+    // Check Highscore
     if (player.score > storedHighScore) {
-      localStorage.setItem("highScore", player.score);
-      highScore.textContent = localStorage.getItem("highScore");
+      player.highScore = player.score;
+      highScore.textContent = player.highScore;
+      localStorage.setItem("highScore", player.highScore);
     }
+
     // Reset Score
     scoreOutput.textContent = 0;
     player.score = 0;
-    localStorage.setItem("score", player.score);
     window.cancelAnimationFrame(checkCollision);
   }
 
