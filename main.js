@@ -16,16 +16,15 @@ const player = {
   highscore: 0,
 };
 
-window.onload = () => {
-  const storedHighScore = localStorage.getItem("highScore");
-  const score = localStorage.getItem("score");
-  highScore.textContent = storedHighScore;
+const storedHighScore = localStorage.getItem("highScore");
+const score = localStorage.getItem("score");
 
-  if (!storedHighScore && !score) {
-    localStorage.setItem("highScore", player.highscore);
-    localStorage.setItem("score", player.score);
-  }
-};
+if (!storedHighScore && !score) {
+  localStorage.setItem("highScore", player.highscore);
+  localStorage.setItem("score", player.score);
+}
+
+highScore.textContent = storedHighScore;
 
 const moveLeft = () => {
   let left = parseInt(
