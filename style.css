@@ -139,6 +139,7 @@ body {
 
 .mobile-controller {
   z-index: 999;
+  user-select: none;
 }
 
 @media (max-width: 500px) {
