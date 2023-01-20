@@ -6,6 +6,11 @@ const startBtn = document.querySelector(".start");
 const scoreOutput = document.querySelector(".score");
 const highScore = document.querySelector(".highscore");
 
+// Mobile Controller
+const mobileControllerContainer = document.querySelector(".mobile-controller");
+const leftController = document.querySelector(".left-controller");
+const rightController = document.querySelector(".right-controller");
+
 const player = {
   score: 0,
   highscore: 0,
@@ -64,6 +69,13 @@ window.onkeydown = (e) => {
   }
 };
 
+leftController.onclick = () => {
+  moveLeft();
+};
+rightController.onclick = () => {
+  moveRight();
+};
+
 const checkCollision = () => {
   const characterLeft = parseInt(
     window.getComputedStyle(character).getPropertyValue("left")
@@ -80,11 +92,11 @@ const checkCollision = () => {
     enemy.style.animation = "none";
     game.classList.add("hide");
     startMenu.classList.remove("hide");
+    mobileControllerContainer.style.display = "none";
 
     // Check Highscore
     const storedHighScore = parseInt(localStorage.getItem("highScore"));
     if (player.score > storedHighScore) {
-      console.log("new highscore");
       localStorage.setItem("highScore", player.score);
       highScore.textContent = localStorage.getItem("highScore");
     }
@@ -106,6 +118,7 @@ const startFuntion = () => {
   enemy.style.animation = "slide 0.8s infinite linear";
   game.classList.remove("hide");
   startMenu.classList.add("hide");
+  mobileControllerContainer.style.display = "flex";
   window.requestAnimationFrame(checkCollision);
 };
 
